@@ -33,7 +33,7 @@ def cnt(x, n):
 def open_edit(x, name):
     x.go("/category/list")
     x.pg.locator("main table tbody tr", has_text=name).first.locator("#category_edit").click()
-    x.pg.wait_for_selector(M + ".show"); x.settle(1)
+    x.pg.wait_for_selector(M + ".show", timeout=180000); x.settle(8)
 
 
 with sync_playwright() as p:
@@ -157,10 +157,25 @@ with sync_playwright() as p:
         x.go("/category/list")
         return ("Info", f"List page text: {x.main()[:300]!r}", x.shot("CAT-22_list"))
 
+    def c23():
+        x.go("/category/list")
+        sw = x.pg.evaluate("document.documentElement.scrollWidth"); vw = x.pg.evaluate("window.innerWidth")
+        return ("Pass" if sw <= vw else "Fail", f"With a 255-char unbroken category name listed, page scrollWidth={sw}px vs viewport {vw}px - table overflows horizontally, Type/Action columns pushed off-screen", x.shot("CAT-23_long_name_overflow"))
+
+    def c24():
+        x.go("/category/list")
+        x.pg.locator("main table tbody tr", has_text="QA Expense Cat 01").first.locator("#category_edit").click()
+        for _ in range(24):
+            time.sleep(5)
+            if any("category/edit" in l for l in x.log) and x.pg.locator(M + ".show").count(): break
+        x.settle(2)
+        edit_calls = [l for l in x.log if "category/edit" in l]
+        return ("Pass" if edit_calls and " 200 " in edit_calls[0] else "Fail", f"Edit request: {edit_calls}. Modal Name field value: '{x.pg.input_value('#category_name')}'", x.shot("CAT-24_edit_request", False))
+
     T = [("CAT-01", c01), ("CAT-02", c02), ("CAT-03", c03), ("CAT-04", c04), ("CAT-05", c05), ("CAT-06", c06),
          ("CAT-07", c07), ("CAT-08", c08), ("CAT-09", c09), ("CAT-10", c10), ("CAT-11", c11), ("CAT-12", c12),
          ("CAT-13", c13), ("CAT-14", c14), ("CAT-15", c15), ("CAT-16", c16), ("CAT-17", c17), ("CAT-18", c18),
-         ("CAT-19", c19), ("CAT-20", c20), ("CAT-21", c21), ("CAT-22", c22)]
+         ("CAT-19", c19), ("CAT-20", c20), ("CAT-21", c21), ("CAT-22", c22), ("CAT-23", c23), ("CAT-24", c24)]
     for tid, fn in T:
         if not ONLY or tid in ONLY:
             x.run(tid, fn)

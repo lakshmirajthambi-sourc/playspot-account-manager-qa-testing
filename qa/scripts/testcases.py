@@ -74,6 +74,11 @@ add("CAT-21", C, "Receipt category dropdown shows only Expense categories", "Fun
     "1. Open Receipts > Add receipt\n2. Expand Category", "-", "Only Expense categories listed", "High")
 add("CAT-22", C, "Category list display", "UI", CP, "1. Open category list", "-", "List shows #, Name, Type, Action with item count", "Low")
 
+add("CAT-23", C, "List layout with very long category name", "UI", CP + "; 255-char category exists (CAT-12)", "1. Open category list\n2. Check table fits the page", "-",
+    "Long names wrap/truncate; no horizontal page overflow", "Low")
+add("CAT-24", C, "Edit request loads category data", "Functional / CRUD-Update", CP, "1. Click edit (pencil) on 'QA Expense Cat 01'\n2. Observe network request and modal", "-",
+    "Edit data request returns 200 and modal is prefilled", "High")
+
 # ---------------- Vendor ----------------
 V = "Vendor Management"
 VP = PRE_LOGIN + "; Master Settings > Vendors"

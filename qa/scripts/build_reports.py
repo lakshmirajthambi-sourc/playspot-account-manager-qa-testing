@@ -13,7 +13,7 @@ ENV = "URL: http://64.227.145.76/account-manager-2/public | Chrome (Playwright C
 
 # ---- load results
 R = {}
-for f in glob.glob(os.path.join(ROOT, "results", "*.json")):
+for f in [g for g in glob.glob(os.path.join(ROOT, "results", "*.json")) if "bugs_built" not in g]:
     for r in json.load(open(f, encoding="utf-8")):
         R[r["id"]] = r
 
@@ -94,6 +94,21 @@ BUGS = [
      "Broken image; img src 'http://64.227.145.76/account-manager-2/public/public/vendor' returns 404", "Medium", "P3"),
     (["VEN-12"], "Vendor Management", "Non-image file accepted as vendor logo", "Logged in", "1. Fill Name/Name(ar)\n2. Choose .txt file as Logo\n3. Save",
      "Only image types (jpg/png) accepted", "See VEN-12 actual result", "Medium", "P3"),
+    (["CAT-24", "CAT-15"], "Category Management", "Category Edit does not load data - edit request goes to wrong application path (account-manager-qa) and returns 401",
+     "Logged in; category 'QA Expense Cat 01' exists", "1. Open Master Settings > Categories\n2. Click the blue edit (pencil) button on 'QA Expense Cat 01'\n3. Observe the modal and the network request",
+     "Modal opens prefilled with the category's Name, Arabic Name and Type; changes can be saved",
+     "See CAT-24 actual result: request GET http://64.227.145.76/account-manager-qa/public/category/edit/<id> -> 401; modal fields stay empty, so an existing category cannot be edited",
+     "High", "P1"),
+    (["VEN-16", "VEN-17"], "Vendor Management", "Vendor Search does not filter the list",
+     "Logged in; several vendors exist", "1. Open Vendors list\n2. Type 'Beta' (or 'zzNoSuchVendorzz') in search box\n3. Click Search",
+     "Only vendors matching the search text are listed (or 0 items)", "All vendors remain listed; the search term has no effect (re-verified with a 20 s wait)",
+     "Medium", "P2"),
+    (["VEN-20"], "Vendor Management", "Vendor delete shows success message but the vendor remains in the list",
+     "Logged in; vendor 'QA Vendor Min Edited' exists", "1. Open Vendors list\n2. Click delete (red) on 'QA Vendor Min Edited'\n3. Click OK on confirmation\n4. Check list",
+     "Vendor removed from list", "'Vendor deleted successfully' is shown but 'QA Vendor Min Edited' is still listed (reproduced twice)", "High", "P2"),
+    (["CAT-23"], "Category Management", "Long category names break list layout (horizontal overflow)",
+     "Logged in; a category with a long unbroken name exists", "1. Create category with 255-char name without spaces\n2. Open category list",
+     "Long text wraps or is truncated; table fits within page", "See CAT-23 actual result", "Low", "P3"),
     (["GEN-03"], "General / Navigation", "Expenses list page renders only the text '1'", "Logged in",
      "1. From Dashboard click 'Expenses' (or open /expense/list)", "Expense list page with layout and table", "Blank page containing only '1'", "High", "P2"),
     (["GEN-04"], "General / Navigation", "Multiple CSS/JS/icon assets return 404 on every page", "Logged in",
@@ -181,8 +196,8 @@ def build_bugs():
     wb = Workbook(); ws = wb.active; ws.title = "Bug Report"
     hdr = ["Bug ID", "Module", "Bug Title", "Environment", "Preconditions", "Steps to Reproduce", "Expected Result", "Actual Result", "Severity", "Priority", "Status", "Linked Test Case", "Screenshot Evidence"]
     data = []; shots = []; n = 0
-    evdir = os.path.join(OUT, "Screenshots"); os.makedirs(evdir, exist_ok=True)
-    for tcs, mod, title, pre, steps, exp, act, sev, pri in BUGS:
+    evdir = os.path.join(OUT, "Screenshots"); shutil.rmtree(evdir, ignore_errors=True); os.makedirs(evdir, exist_ok=True)
+    for tcs, mod, title, pre, steps, exp, act, sev, pri in sorted(BUGS, key=lambda b: ["Critical", "High", "Medium", "Low"].index(b[7])):
         failed = [t for t in tcs if R.get(t, {}).get("status") == "Fail"]
         if not failed: continue
         n += 1; bid = f"BUG-{n:03d}"
