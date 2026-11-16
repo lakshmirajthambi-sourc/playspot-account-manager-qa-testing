@@ -1,0 +1,66 @@
+--- CAT-01
+    Pass: Add Category modal opened with Name, Arabic Name, Type (options: Please select, Income, Expense), Close and Save.
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg']
+--- CAT-02
+    Pass: Form not submitted; inline messages: ['Please enter category name', 'Please choose category arabic name', 'Please choose category type']
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg']
+--- CAT-03
+    Pass: Alert 'Category created successfully'. Row: [['1', 'QA Income Cat 02', 'Income', '']]
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg', 'POST 302 http://64.227.145.76/account-manager-2/public/category/store', 'GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg']
+--- CAT-04
+    Pass: Alert 'Category created successfully'. Row: [['1', 'QA Expense Cat 01', 'Expense', '']]
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg', 'POST 302 http://64.227.145.76/account-manager-2/public/category/store', 'GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg']
+--- CAT-05
+    Pass: Messages: ['Please enter category name']
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg']
+--- CAT-06
+    Pass: Messages: ['Please choose category type']; rows created=0
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg']
+--- CAT-07
+    Pass: Arabic name blank -> messages: ['Please choose category arabic name']; rows created=0
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg']
+--- CAT-08
+    Pass: Duplicate name+type submitted. Alert 'The category name has already been taken.'. Messages []. Rows named 'QA Income Cat 02' now: 1
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg', 'POST 302 http://64.227.145.76/account-manager-2/public/category/store', 'GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg']
+--- CAT-09
+    Pass: Lower-case duplicate submitted. Alert 'The category name has already been taken.'. Case-insensitive matches: 1
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg', 'POST 302 http://64.227.145.76/account-manager-2/public/category/store', 'GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg']
+--- CAT-10
+    Pass: Whitespace-only name. Messages []. Alert 'The category name field is required.'. Blank-name rows: 0
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg', 'POST 302 http://64.227.145.76/account-manager-2/public/category/store', 'GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg']
+--- CAT-11
+    Pass: 1-char name. Alert 'Category created successfully'. Rows: 1
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg', 'POST 302 http://64.227.145.76/account-manager-2/public/category/store', 'GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg']
+--- CAT-12
+    Pass: 255-char name. Alert 'Category created successfully'. Saved intact: True. Title: 'Accounts Manager'
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg', 'POST 302 http://64.227.145.76/account-manager-2/public/category/store', 'GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg']
+--- CAT-13
+    Fail: 256-char name. Page title "🧨 SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'cat_name' at row 1 (SQL: insert into `categories` (`cat_name`, `cat_type`, `cat_lo_name`, `updated_at`, `created_at`) values (QAMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM, 2, ع, 2026-11-16 08:29:15, 2026-11-16 08:29:15))". Saved lengths []. Body: "/var/www/html/account-manager-2/\nIlluminate\\Database\\QueryException\nSQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'cat_name' at row 1 (SQL: insert into `categories` (`ca"
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg', 'POST 500 http://64.227.145.76/account-manager-2/public/category/store']
+--- CAT-14
+    Pass: Script in name. JS dialogs fired: []. Rendered as literal text: True
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg', 'POST 302 http://64.227.145.76/account-manager-2/public/category/store', 'GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg']
+--- CAT-15
+    Blocked: Automation error: Page.wait_for_selector: Timeout 90000ms exceeded.
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg', 'GET 401 http://64.227.145.76/account-manager-qa/public/category/edit/eyJpdiI6ImJTQXhNVUtqbUZWMkFqUUdNVHNYelE9PSIsInZhbHVlIjoibG1ZZDh1VTRaL3hQYUNIMUpmVG96Zz09IiwibWFjIjoiZjdmZTQ5ZTI5OGUwN2JjOTFlZjhiMjM1MGYwMGE4NWVhYTdjODRiMjg3NDYyMmU2NDg1ODY2NDJiOWI5NGMyMCIsInRhZyI6IiJ9']
+--- CAT-16
+    Blocked: Automation error: Page.goto: Timeout 120000ms exceeded.
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css']
+--- CAT-17
+    Blocked: Automation error: Locator.click: Timeout 90000ms exceeded.
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg', 'GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg']
+--- CAT-18
+    Pass: Confirm '['Do you want to delete this category']' dismissed. Rows before=6, after=6
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg']
+--- CAT-19
+    Pass: Confirm '['Do you want to delete this category']' accepted. Alert 'Category deleted successfully'. Rows before=1, after=0
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg', 'GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg']
+--- CAT-20
+    Fail: Invoice Category dropdown: ['Please select', 'Add new category', "<script>alert('xss')</script>QA", 'QALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL', 'Q', 'QA Expense Cat 01', 'QA Income Cat 02']. Expense categories present: ['QALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL', 'Q', 'QA Expense Cat 01']
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg', 'GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg']
+--- CAT-21
+    Fail: Receipt Category dropdown: ['Please select', 'Add new category', "<script>alert('xss')</script>QA", 'QALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL', 'Q', 'QA Expense Cat 01', 'QA Income Cat 02']. Income categories present: ["<script>alert('xss')</script>QA", 'QA Income Cat 02']
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg', 'GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg']
+--- CAT-22
+    Info: List page text: "Add Category\n#\tName\tType\tAction\n1\t<script>alert('xss')</script>QA\tIncome\t \n2\tQALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL"
+    net: ['GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css', 'GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg']

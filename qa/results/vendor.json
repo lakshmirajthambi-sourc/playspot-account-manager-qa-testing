@@ -1,0 +1,325 @@
+[
+ {
+  "id": "VEN-01",
+  "status": "Pass",
+  "actual": "Add Vendor page shows Name, Name (ar), Phone, Email, Address, Address (ar), Logo upload, Close, Save. No asterisk marks the mandatory fields.",
+  "evidence": "screens/VEN-01_form.png",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg"
+  ],
+  "dialogs": []
+ },
+ {
+  "id": "VEN-02",
+  "status": "Pass",
+  "actual": "Stayed on http://64.227.145.76/account-manager-2/public/vendor/create; messages ['Please enter vendor name', 'Please enter vendor arabic name']",
+  "evidence": "screens/VEN-02_empty.png",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg"
+  ],
+  "dialogs": []
+ },
+ {
+  "id": "VEN-03",
+  "status": "Pass",
+  "actual": "Redirected to http://64.227.145.76/account-manager-2/public/vendor/list; alert 'Vendor created successfully'; row [['1', '', 'QA Vendor Beta', '9876500001', 'qa.beta@example.com', '1 QA Road, Kochi', '']]; logo img(src,naturalWidth)=[['http://64.227.145.76/account-manager-2/public/public/vendor', 0], ['http://64.227.145.76/account-manager-2/public/public/vendor', 0]]",
+  "evidence": "screens/VEN-03_added.png",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "POST 302 http://64.227.145.76/account-manager-2/public/vendor/store",
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg"
+  ],
+  "dialogs": []
+ },
+ {
+  "id": "VEN-04",
+  "status": "Pass",
+  "actual": "Only mandatory fields filled. URL http://64.227.145.76/account-manager-2/public/vendor/list; alert 'Vendor created successfully'; messages []",
+  "evidence": "screens/VEN-04_min.png",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "POST 302 http://64.227.145.76/account-manager-2/public/vendor/store",
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg"
+  ],
+  "dialogs": []
+ },
+ {
+  "id": "VEN-05",
+  "status": "Fail",
+  "actual": "Email 'abc@' submitted. URL after save http://64.227.145.76/account-manager-2/public/vendor/list; alert 'Vendor created successfully'; messages []; vendor rows created=1",
+  "evidence": "screens/VEN-05_bad_email.png",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg"
+  ],
+  "dialogs": []
+ },
+ {
+  "id": "VEN-06",
+  "status": "Fail",
+  "actual": "Phone 'abcd!@#$' submitted. Alert 'Vendor created successfully'; messages []; rows created=1 [['1', '', 'QA Vendor BadPhone', 'abcd!@#$', 'qa.phone@example.com', '', '']]",
+  "evidence": "screens/VEN-06_bad_phone.png",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg"
+  ],
+  "dialogs": []
+ },
+ {
+  "id": "VEN-07",
+  "status": "Fail",
+  "actual": "30-digit phone submitted. Alert 'Vendor created successfully'; messages []; rows created=1; title 'Accounts Manager'",
+  "evidence": "screens/VEN-07_long_phone.png",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg"
+  ],
+  "dialogs": []
+ },
+ {
+  "id": "VEN-08",
+  "status": "Fail",
+  "actual": "Same name/phone/email as existing vendor. Alert 'Vendor created successfully'; messages []; rows named 'QA Vendor Beta' = 2",
+  "evidence": "screens/VEN-08_duplicate.png",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg"
+  ],
+  "dialogs": []
+ },
+ {
+  "id": "VEN-09",
+  "status": "Pass",
+  "actual": "Whitespace-only name. Alert 'The vendor name field is required.'; messages []; blank-name rows=0",
+  "evidence": "screens/VEN-09_whitespace.png",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor"
+  ],
+  "dialogs": []
+ },
+ {
+  "id": "VEN-10",
+  "status": "Pass",
+  "actual": "255-char name. Alert 'Vendor created successfully'; saved intact=True",
+  "evidence": "screens/VEN-10_255.png",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg"
+  ],
+  "dialogs": []
+ },
+ {
+  "id": "VEN-11",
+  "status": "Blocked",
+  "actual": "Automation error: Page.goto: Timeout 120000ms exceeded.",
+  "evidence": "screens/VEN-11_error.png",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css"
+  ],
+  "dialogs": []
+ },
+ {
+  "id": "VEN-12",
+  "status": "Pass",
+  "actual": ".txt file uploaded as logo. Alert ''; messages ['Please enter a value with a valid mimetype.']; rows created=0",
+  "evidence": "screens/VEN-12_txt_logo.png",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor"
+  ],
+  "dialogs": []
+ },
+ {
+  "id": "VEN-13",
+  "status": "Pass",
+  "actual": "Script in name. JS dialogs fired: []",
+  "evidence": "screens/VEN-13_xss.png",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "POST 302 http://64.227.145.76/account-manager-2/public/vendor/store",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor"
+  ],
+  "dialogs": []
+ },
+ {
+  "id": "VEN-14",
+  "status": "Pass",
+  "actual": "Edit page prefilled ['QA Vendor Min', 'حد أدنى']; after save alert 'Vendor updated successfully'; row [['7', '', 'QA Vendor Min Edited', '9876500099', '', '', '']]; old rows 0",
+  "evidence": "screens/VEN-14_edited.png",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "POST 302 http://64.227.145.76/account-manager-2/public/vendor/store",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor"
+  ],
+  "dialogs": []
+ },
+ {
+  "id": "VEN-15",
+  "status": "Pass",
+  "actual": "Name blanked on edit; messages ['Please enter vendor name']; original still present=1",
+  "evidence": "",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg"
+  ],
+  "dialogs": []
+ },
+ {
+  "id": "VEN-16",
+  "status": "Fail",
+  "actual": "Search 'Beta' -> rows [\"<script>alert('xss')</script>QAV\", 'QAVNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN', 'QA Vendor Beta', 'QA Vendor LongPhone', 'QA Vendor BadPhone', 'QA Vendor BadEmail', 'QA Vendor Min Edited', 'QA Vendor Beta', 'QA Vendor Alpha']",
+  "evidence": "screens/VEN-16_search.png",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "GET 401 http://64.227.145.76/account-manager-qa/public/vendor/list?&search_term=Beta"
+  ],
+  "dialogs": [
+   "Data could not be loaded."
+  ]
+ },
+ {
+  "id": "VEN-17",
+  "status": "Fail",
+  "actual": "Search non-existent -> rows [\"<script>alert('xss')</script>QAV\", 'QAVNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN', 'QA Vendor Beta', 'QA Vendor LongPhone', 'QA Vendor BadPhone', 'QA Vendor BadEmail', 'QA Vendor Min Edited', 'QA Vendor Beta', 'QA Vendor Alpha']; text 'You got 9 items\\n\\n#\\tLogo\\tN'",
+  "evidence": "screens/VEN-17_search_none.png",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 401 http://64.227.145.76/account-manager-qa/public/vendor/list?&search_term=zzNoSuchVendorzz"
+  ],
+  "dialogs": [
+   "Data could not be loaded."
+  ]
+ },
+ {
+  "id": "VEN-18",
+  "status": "Pass",
+  "actual": "Downloaded 'vendor.xlsx' (6586 bytes)",
+  "evidence": "",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "POST 200 http://64.227.145.76/account-manager-2/public/vendor/export"
+  ],
+  "dialogs": []
+ },
+ {
+  "id": "VEN-19",
+  "status": "Pass",
+  "actual": "Confirm '['Do you want to delete this vendor']' dismissed; rows before 9 after 9",
+  "evidence": "",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor"
+  ],
+  "dialogs": [
+   "Do you want to delete this vendor"
+  ]
+ },
+ {
+  "id": "VEN-20",
+  "status": "Fail",
+  "actual": "Confirm accepted; alert 'Vendor deleted successfully'; remaining rows 1",
+  "evidence": "screens/VEN-20_deleted.png",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor"
+  ],
+  "dialogs": [
+   "Do you want to delete this vendor"
+  ]
+ },
+ {
+  "id": "VEN-21",
+  "status": "Pass",
+  "actual": "Vendors in list 9; invoice dropdown ['Please select', 'Add new vendor', \"<script>alert('xss')</script>QAV\", 'QAVNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN', 'QA Vendor Beta', 'QA Vendor LongPhone', 'QA Vendor BadPhone', 'QA Vendor BadEmail', 'QA Vendor Min Edited', 'QA Vendor Beta', 'QA Vendor Alpha']; receipt dropdown ['Please select', 'Add new vendor', \"<script>alert('xss')</script>QAV\", 'QAVNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN', 'QA Vendor Beta', 'QA Vendor LongPhone', 'QA Vendor BadPhone', 'QA Vendor BadEmail', 'QA Vendor Min Edited', 'QA Vendor Beta', 'QA Vendor Alpha']; missing []",
+  "evidence": "screens/VEN-21_receipt_vendor_dd.png",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg"
+  ],
+  "dialogs": []
+ },
+ {
+  "id": "VEN-22",
+  "status": "Pass",
+  "actual": "After Clear: search box '', rows 9",
+  "evidence": "",
+  "net": [
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/css/coreui-chartjs.css",
+   "GET 404 http://64.227.145.76/account-manager-2/public/public/vendor",
+   "GET 404 http://64.227.145.76/account-manager-2/public/icons/sprites/free.svg",
+   "GET 401 http://64.227.145.76/account-manager-qa/public/vendor/list?&search_term=Beta",
+   "GET 401 http://64.227.145.76/account-manager-qa/public/vendor/list?&search_term="
+  ],
+  "dialogs": [
+   "Data could not be loaded.",
+   "Data could not be loaded."
+  ]
+ }
+]

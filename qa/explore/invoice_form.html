@@ -1,0 +1,149 @@
+<form action="http://64.227.145.76/account-manager-2/public/invoice/store" method="post" id="invoice_form" novalidate="novalidate">
+                                <div class="card ">
+                                    <div class="card-body ">
+                                        <input type="hidden" name="_token" id="_token" value="ILDR4uES7yAMNV4WsOr9BQosobLNNkr1VgRZNCvW">
+                                        <div class="form-group row">
+
+
+
+
+
+                                            <label for="name" class="col-md-2">Category</label>
+
+                                            <div class="col-md-4">
+                                                <select class="form-control inv_select" id="category_id" name="category_id">
+                                                    <option value="">Please select</option>
+                                                    <option value="0">Add new category</option>
+                                                                                                            <option value="6"> &lt;script&gt;alert('xss')&lt;/script&gt;QA</option>
+
+                                                                                                            <option value="5"> QALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL</option>
+
+                                                                                                            <option value="4"> Q</option>
+
+                                                                                                            <option value="3"> QA Expense Cat 01</option>
+
+                                                                                                            <option value="2"> QA Income Cat 02</option>
+
+                                                                                                            <option value="1"> QA Income Cat 01</option>
+
+                                                                                                    </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="name" class="col-md-2">Title</label>
+                                            <div class="col-md-10">
+                                                <input class="form-control" id="invoice_title" name="invoice_title" type="text" value="" placeholder="Enter invoice title">
+                                            </div>
+                                        </div>
+                                                                                    <div class="form-group row">
+                                                <label for="name" class="col-md-2"> Title(ar)</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" id="invoice_lo_title" name="invoice_lo_title" type="text" value="" placeholder="Enter arabic title">
+                                                </div>
+                                            </div>
+
+                                                                                <div class="form-group row">
+                                            <label for="name" class="col-md-2">Vendor</label>
+                                            <div class="col-md-4">
+                                                <select class="form-control inv_select" id="vendor_id" name="vendor_id">
+                                                    <option value="">Please select</option>
+                                                    <option value="0">Add new vendor</option>
+                                                                                                            <option value="6"> QA Vendor LongPhone</option>
+                                                                                                            <option value="5"> QA Vendor BadPhone</option>
+                                                                                                            <option value="4"> QA Vendor BadEmail</option>
+                                                                                                            <option value="3"> QA Vendor Min</option>
+                                                                                                            <option value="2"> QA Vendor Beta</option>
+                                                                                                            <option value="1"> QA Vendor Alpha</option>
+                                                                                                    </select>
+                                            </div>
+
+                                            <label for="name" class="col-md-2">Date</label>
+                                            <div class="col-md-4  ">
+                                                <div class=" input-group ingr_invoice_date">
+
+                                                    <input type="text" id="invoice_date" class="form-control form_date hasDatepicker" name="invoice_date" placeholder="dd/mm/yyy">
+
+                                                    <div class="input-group-append"><span class="input-group-text">
+                                             <i class="cil-calendar"></i></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div></div>
+                                <div class="section-card">
+                                    <div class="card">
+                                        <div class="card-body">
+                                                
+                                                                                                <div class="row sub-section-title">
+                                                    <div class="form-group col-sm-7">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control input-sub ititle" name="ititle[0]" placeholder="Enter title"><br>
+                                                            <input type="text" class="form-control input-sub ititle_lo" name="ititle_lo[0]" placeholder="Enter arabic title">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-3">
+                                                        <label for="postal-code"></label>
+                                                        <input type="text" class="form-control input-sub amount" name="amount[0]" placeholder="Amount">
+                                                    </div>
+                                                    <div class="form-group col-sm-2"><br>
+                                                            <img src="http://64.227.145.76/account-manager-2/public/assets/images/plus-circle.png" title="Add New" class="add_new_title_section" key="0" width="20px" height="20px" style=" margin-bottom: -16px;margin-right: auto;cursor: pointer">
+                                                    </div>
+                                                </div>
+                                                <div class="title-sec"></div>
+                                                
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <input type="hidden" name="invoice_id" id="invoice_id">
+                                <div class="card ">
+                                    <div class="card-body ">
+                                        <div class="form-group row">
+                                            <label for="name" class="col-md-2">Tax</label>
+                                            <div class="col-md-4">
+                                                <input class="form-control tax-input" value="" id="inv_tax" name="inv_tax" type="text" placeholder="Enter tax in percentage">
+                                            </div>
+                                            <label for="name" class="col-md-2">Total Amount</label>
+                                            <div class="col-md-4">
+                                                                                                INR <label id="total_label">0</label>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="name" class="col-md-2">Amount in words</label>
+                                            <div class="col-md-10">
+                                                <input class="form-control " value="" id="inv_amount_words" name="inv_amount_words" type="text" placeholder="Amount in words">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="name" class="col-md-2">Amount in words(ar)</label>
+                                            <div class="col-md-10">
+                                                <input class="form-control " value="" id="inv_lo_amount_words" name="inv_lo_amount_words" type="text" placeholder="Amount in words(arabic)">
+                                            </div>
+                                        </div>
+                                    </div></div>
+
+                                <div class="card ">
+                                    <div class="card-body ">
+                                        <div class="form-group row">
+                                            <label for="name" class="col-md-2">Notes</label>
+                                            <div class="col-md-4">
+                                                <textarea name="invoice_notes" class="form-control" id="invoice_notes" cols="30" rows="10"></textarea>
+                                            </div>
+                                        </div>
+                                                                                    <div class="form-group row">
+                                                <label for="name" class="col-md-2">Notes(ar)</label>
+                                                <div class="col-md-4">
+                                                    <textarea name="invoice_lo_notes" class="form-control" id="invoice_lo_notes" cols="30" rows="10"></textarea>
+                                                </div>
+                                            </div>
+                                                                            </div>
+                                </div>
+
+                                <div class="card-footer">
+                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                    <button class="btn btn-info" type="submit">Save </button>
+                                </div>
+                            </form>
